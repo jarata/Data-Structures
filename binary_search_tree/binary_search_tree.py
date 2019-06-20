@@ -26,4 +26,9 @@ class BinarySearchTree:
 		pass
 
 	def for_each(self, cb):
-		pass
+		res = []
+		if cb:
+			res.append(cb.value)
+			res = res + self.for_each(cb.left)
+			res = res + self.for_each(cb.right)
+		return res
