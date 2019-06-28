@@ -20,10 +20,28 @@ class BinarySearchTree:
 			self.value = value
 
 	def contains(self, target):
-		pass
+		if self.value == target:
+			return True
+		elif self.value < target:
+			if self.right is None:
+				return False
+			else:
+				return self.right.contains(target)
+		elif self.value > target:
+			if self.left is None:
+				return False
+			else:
+				return self.left.contains(target)
 
 	def get_max(self):
-		pass
+	# 	find largest node
+	# keep going right to endpoint
+		max = self.value
+	# 	loop through list, update max value if going right, until end of tree
+	#  max value at end of tree
+		while max.right:
+			max = max.right
+		return max.value
 
 	def for_each(self, cb):
 		res = []
